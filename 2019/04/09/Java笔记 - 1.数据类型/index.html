@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="基本数据类型Java的基本数据类型可以分为两大类：boolean类型和数值类型。数值类型分为整型和浮点型，整型中的字符型往往被单独对待。（string类型不是基本类型，是一个引用类型。） 1. 整型 byte：一个byte型整数在内存里占8位，-128-127short：一个short类型占16位，-32768-32767int：一个int类型占32位，-2147483648-2147483647">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-09T15:03:43.693Z">
+<meta property="og:updated_time" content="2019-04-09T15:10:02.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java笔记（一）数据类型">
 <meta name="twitter:description" content="基本数据类型Java的基本数据类型可以分为两大类：boolean类型和数值类型。数值类型分为整型和浮点型，整型中的字符型往往被单独对待。（string类型不是基本类型，是一个引用类型。） 1. 整型 byte：一个byte型整数在内存里占8位，-128-127short：一个short类型占16位，-32768-32767int：一个int类型占32位，-2147483648-2147483647">
@@ -126,7 +126,7 @@
 </ul>
 <h5 id="1-算术运算符"><a href="#1-算术运算符" class="headerlink" title="1. 算术运算符"></a>1. 算术运算符</h5><p>Java支持所有的基本算术运算符：加、减、乘、除和求余等。Java没有提供复杂的运算，如需完成开方、乘方等运算，可借助于java.lang.Math类的工具完成复杂的数学运算。Math类下包含了丰富的静态方法，用于完成各种复杂的数学运算。</p>
 <h5 id="2-位运算符"><a href="#2-位运算符" class="headerlink" title="2. 位运算符"></a>2. 位运算符</h5><p>Java支持的位运算符有七个：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&amp;：按位与</span><br><span class="line">|：按位或</span><br><span class="line">~：按位非</span><br><span class="line">^：按位异或</span><br><span class="line">&lt;&lt;：左位移运算符</span><br><span class="line">&gt;&gt;：右位移运算符</span><br><span class="line">&gt;&gt;&gt;：无符号右移运算符 </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&amp;：按位与</span><br><span class="line">|：按位或</span><br><span class="line">~：按位非</span><br><span class="line">^：按位异或</span><br><span class="line">&lt;&lt;：左位移运算符</span><br><span class="line">&gt;&gt;：右位移运算符</span><br><span class="line">&gt;&gt;&gt;：无符号右移运算符</span><br></pre></td></tr></table></figure>
 <p>位移运算中，左位移后面多出来的空位补0，前面位移出去的位数截掉。右位移前面多出来的空位补符号，后面多出去的截掉。</p>
 <h5 id="3-三目运算符"><a href="#3-三目运算符" class="headerlink" title="3. 三目运算符"></a>3. 三目运算符</h5><p>三目运算符只有一个？：。使用方法如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string strone=<span class="number">5</span>&gt;<span class="number">3</span>?<span class="string">"5大于3"</span>:<span class="string">"5不大于3"</span>;</span><br></pre></td></tr></table></figure>
