@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/09/Java笔记 - 1.数据类型/">一、 数据类型</a>
+      <a class="article-title" href="/2019/04/09/Java笔记 - 1.数据类型/">Java笔记（一）数据类型</a>
     </h1>
   
 
@@ -104,9 +104,9 @@
 </ul>
 <p>字符常量也可以用16进制编码方式来表示，范围是0000-FFFF，共65535个字符，其中前256个字符和ASCII码中的字符完全重合。<br><br>关于char变量的赋值方式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> zhong;</span><br><span class="line">zhong=<span class="string">'a'</span>;</span><br><span class="line">zhong=<span class="number">20014</span>;范围：<span class="number">0</span>-<span class="number">65535</span></span><br><span class="line">zhong=<span class="string">'\u9999'</span>;</span><br><span class="line">zhong=<span class="number">20012</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">var</span>=zhong;这种用法是可以的；</span><br></pre></td></tr></table></figure></p>
 <p>String是一个类，可以通过查阅API文档来使用。在Java语言中单引号、双引号和反斜线都有特殊的用途，如果一个字符串中包含这些特殊字符，应该使用转义字符的表示形式。如要写：”c:\codes”，在代码中应呈现为：”c:\codes”。</p>
-<h5 id="3-浮点型"><a href="#3-浮点型" class="headerlink" title="3.浮点型"></a>3.浮点型</h5><p>Java的浮点类型有两种：float和double，一个float类型占4个字节，32位，一个double占8个字节，64位。浮点类型可以用科学计数形式表示，但只有浮点类型可以用科学计数法表示。Java默认浮点类型是double，如果希望Java把一个数用float来处理，在数后面加F或f。<br><br><br>Java提供了三个特殊的浮点值：正负无穷大、非数。正无穷大用POSITIVE-INFINITY表示；负无穷大用NEGATIVE-INFINITY表示；非数用NaN表示。所有正无穷大都相等，所有负无穷大都相等，但是所有NaN都不相等。</p>
+<h5 id="3-浮点型"><a href="#3-浮点型" class="headerlink" title="3.浮点型"></a>3.浮点型</h5><p>Java的浮点类型有两种：float和double，一个float类型占4个字节，32位，一个double占8个字节，64位。浮点类型可以用科学计数形式表示，但只有浮点类型可以用科学计数法表示。Java默认浮点类型是double，如果希望Java把一个数用float来处理，在数后面加F或f。<br><br>Java提供了三个特殊的浮点值：正负无穷大、非数。正无穷大用POSITIVE-INFINITY表示；负无穷大用NEGATIVE-INFINITY表示；非数用NaN表示。所有正无穷大都相等，所有负无穷大都相等，但是所有NaN都不相等。</p>
 <h5 id="4-布尔型"><a href="#4-布尔型" class="headerlink" title="4.布尔型"></a>4.布尔型</h5><p>boolean用来表示逻辑上的真假。在Java中boolean类型的值只能用true和false来表示，不能有0或非0来代表。其他基本数据类型的值也不能转换成boolean类型。boolean类型的值或变量主要用来做旗标进行流程控制。</p>
-<h4 id="基本类型的类型转换"><a href="#基本类型的类型转换" class="headerlink" title="基本类型的类型转换"></a>基本类型的类型转换</h4><p>Java里支持把一个表数范围小的类型的数值直接赋给一个表数大的类型的变量，系统自动完成类型转换。<br>强制类型转换：使用格式为（targetType）var；类似于把一个大瓶子里的水倒入一个小瓶子，大瓶子里的水多就会发生溢出，造成数据丢失，称为缩小转换。<br><br><br>表达式类型的自动提升：当一个算术表达式中包含多个基本类型时，整个算术表达式的数据类型将发生自动提升。Java定义如下的自动提升规则：<br></p>
+<h4 id="基本类型的类型转换"><a href="#基本类型的类型转换" class="headerlink" title="基本类型的类型转换"></a>基本类型的类型转换</h4><p>Java里支持把一个表数范围小的类型的数值直接赋给一个表数大的类型的变量，系统自动完成类型转换。<br>强制类型转换：使用格式为（targetType）var；类似于把一个大瓶子里的水倒入一个小瓶子，大瓶子里的水多就会发生溢出，造成数据丢失，称为缩小转换。<br><br>表达式类型的自动提升：当一个算术表达式中包含多个基本类型时，整个算术表达式的数据类型将发生自动提升。Java定义如下的自动提升规则：<br></p>
 <ul>
 <li>所有byte、short、char型都将被提升为int型；</li>
 <li>整个算术表达式的数据类型自动提升到与表达式中最高等级操作数同样的类型。</li>
@@ -173,7 +173,7 @@
       <ul>
         
           <li>
-            <a href="/2019/04/09/Java笔记 - 1.数据类型/">一、 数据类型</a>
+            <a href="/2019/04/09/Java笔记 - 1.数据类型/">Java笔记（一）数据类型</a>
           </li>
         
       </ul>
