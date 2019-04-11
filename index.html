@@ -146,88 +146,11 @@
 
 
   
-    <article id="post-Java笔记 - 1.数据类型" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/09/Java笔记 - 1.数据类型/" class="article-date">
-  <time datetime="2019-04-09T14:10:18.158Z" itemprop="datePublished">2019-04-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/09/Java笔记 - 1.数据类型/">Java笔记（一）数据类型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h4><p>Java的基本数据类型可以分为两大类：boolean类型和数值类型。数值类型分为整型和浮点型，整型中的字符型往往被单独对待。（string类型不是基本类型，是一个引用类型。）</p>
-<h5 id="1-整型"><a href="#1-整型" class="headerlink" title="1. 整型"></a>1. 整型</h5><p> byte：一个byte型整数在内存里占8位，-128-127<br>short：一个short类型占16位，-32768-32767<br>int：一个int类型占32位，-2147483648-2147483647<br>long：占64位，负的2的63次幂到正的2的63次幂-1；<br><br><br>使用一个巨大的整数常量（超出了int的范围），Java不会自动把这个整数常量当成long类型来处理，应该在整数常量后加l或L作为后缀。（推荐使用L，因为l很容易与1搞混。）Java中整数常量有三种表达方式：10进制、8进制、16进制。8进制数以O开头，6进制数以OX或Ox开头，如下：<br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> var1=O13;</span><br><span class="line"><span class="keyword">int</span> var2=Ox13;</span><br><span class="line"><span class="keyword">int</span> var3=OXaF;</span><br></pre></td></tr></table></figure></p>
-<h5 id="2-字符型"><a href="#2-字符型" class="headerlink" title="2. 字符型"></a>2. 字符型</h5><p>字符型表示单个字符，字符常量必须用单引号（’’）括起来。Java语言使用16位的Unicode编码集作为编码方式，所以Java程序支持各种语言的字符。<br><br>字符常量有三种表示方式：<br></p>
-<ul>
-<li>直接通过单个字符来指定，如’A’</li>
-<li>通过转义字符来表示特殊字符常量，如’\n’</li>
-<li>直接使用Unicode值来表示字符常量，格式是：’\uXXXX’，其中XXXX表示一个16进制的整数</li>
-</ul>
-<p>Java常用的转义字符<br></p>
-<ul>
-<li>\b  退格符</li>
-<li>\n 换行符</li>
-<li>\r 回车符</li>
-<li>\t 制表符</li>
-<li>\” 双引号</li>
-<li>\’ 单引号</li>
-<li>\\ 反斜线</li>
-</ul>
-<p>字符常量也可以用16进制编码方式来表示，范围是0000-FFFF，共65535个字符，其中前256个字符和ASCII码中的字符完全重合。<br><br>关于char变量的赋值方式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> zhong;</span><br><span class="line">zhong=<span class="string">'a'</span>;</span><br><span class="line">zhong=<span class="number">20014</span>;范围：<span class="number">0</span>-<span class="number">65535</span></span><br><span class="line">zhong=<span class="string">'\u9999'</span>;</span><br><span class="line">zhong=<span class="number">20012</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">var</span>=zhong;这种用法是可以的；</span><br></pre></td></tr></table></figure></p>
-<p>String是一个类，可以通过查阅API文档来使用。在Java语言中单引号、双引号和反斜线都有特殊的用途，如果一个字符串中包含这些特殊字符，应该使用转义字符的表示形式。如要写：”c:\codes”，在代码中应呈现为：”c:\\codes”。</p>
-<h5 id="3-浮点型"><a href="#3-浮点型" class="headerlink" title="3.浮点型"></a>3.浮点型</h5><p>Java的浮点类型有两种：float和double，一个float类型占4个字节，32位，一个double占8个字节，64位。浮点类型可以用科学计数形式表示，但只有浮点类型可以用科学计数法表示。Java默认浮点类型是double，如果希望Java把一个数用float来处理，在数后面加F或f。<br><br>Java提供了三个特殊的浮点值：正负无穷大、非数。正无穷大用POSITIVE-INFINITY表示；负无穷大用NEGATIVE-INFINITY表示；非数用NaN表示。所有正无穷大都相等，所有负无穷大都相等，但是所有NaN都不相等。</p>
-<h5 id="4-布尔型"><a href="#4-布尔型" class="headerlink" title="4.布尔型"></a>4.布尔型</h5><p>boolean用来表示逻辑上的真假。在Java中boolean类型的值只能用true和false来表示，不能有0或非0来代表。其他基本数据类型的值也不能转换成boolean类型。boolean类型的值或变量主要用来做旗标进行流程控制。</p>
-<h4 id="基本类型的类型转换"><a href="#基本类型的类型转换" class="headerlink" title="基本类型的类型转换"></a>基本类型的类型转换</h4><p>Java里支持把一个表数范围小的类型的数值直接赋给一个表数大的类型的变量，系统自动完成类型转换。<br>强制类型转换：使用格式为（targetType）var；类似于把一个大瓶子里的水倒入一个小瓶子，大瓶子里的水多就会发生溢出，造成数据丢失，称为缩小转换。<br><br>表达式类型的自动提升：当一个算术表达式中包含多个基本类型时，整个算术表达式的数据类型将发生自动提升。Java定义如下的自动提升规则：<br></p>
-<ul>
-<li>所有byte、short、char型都将被提升为int型；</li>
-<li>整个算术表达式的数据类型自动提升到与表达式中最高等级操作数同样的类型。</li>
-</ul>
-<h4 id="直接量"><a href="#直接量" class="headerlink" title="直接量"></a>直接量</h4><p>直接量指在程序中通过源代码直接指定的值，例如int a=5。</p>
-<h5 id="1-直接量的类型"><a href="#1-直接量的类型" class="headerlink" title="1. 直接量的类型"></a>1. 直接量的类型</h5><p>并不是所有数据类型都可以指定直接量，只有三种类型可以：基本类型、字符串类型、null类型。</p>
-<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><p>运算符是一种特殊的符号，用以表示数据的运算、赋值和比较等。Java使用运算符将一个或多个操作数连缀成执行语句，用以实现特定功能。Java语言中运算符可以分为以下几种：<br></p>
-<ul>
-<li>算术运算符</li>
-<li>比较运算符</li>
-<li>赋值运算符</li>
-<li>逻辑运算符</li>
-<li>位运算符</li>
-<li>类型相关运算符</li>
-</ul>
-<h5 id="1-算术运算符"><a href="#1-算术运算符" class="headerlink" title="1. 算术运算符"></a>1. 算术运算符</h5><p>Java支持所有的基本算术运算符：加、减、乘、除和求余等。Java没有提供复杂的运算，如需完成开方、乘方等运算，可借助于java.lang.Math类的工具完成复杂的数学运算。Math类下包含了丰富的静态方法，用于完成各种复杂的数学运算。</p>
-<h5 id="2-位运算符"><a href="#2-位运算符" class="headerlink" title="2. 位运算符"></a>2. 位运算符</h5><p>Java支持的位运算符有七个：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&amp;：按位与</span><br><span class="line">|：按位或</span><br><span class="line">~：按位非</span><br><span class="line">^：按位异或</span><br><span class="line">&lt;&lt;：左位移运算符</span><br><span class="line">&gt;&gt;：右位移运算符</span><br><span class="line">&gt;&gt;&gt;：无符号右移运算符</span><br></pre></td></tr></table></figure>
-<p>位移运算中，左位移后面多出来的空位补0，前面位移出去的位数截掉。右位移前面多出来的空位补符号，后面多出去的截掉。</p>
-<h5 id="3-三目运算符"><a href="#3-三目运算符" class="headerlink" title="3. 三目运算符"></a>3. 三目运算符</h5><p>三目运算符只有一个？：。使用方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string strone=<span class="number">5</span>&gt;<span class="number">3</span>?<span class="string">"5大于3"</span>:<span class="string">"5不大于3"</span>;</span><br></pre></td></tr></table></figure>
-<p>当条件满足时，返回第二个操作数的值，不满足则返回第三个操作数的值。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/09/Java笔记 - 1.数据类型/" data-id="cjuckpurd0000l8x77y3szgnd" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
 
 
-  
-
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
 </section>
         
           <aside id="sidebar">
