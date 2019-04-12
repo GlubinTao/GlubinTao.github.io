@@ -2,227 +2,85 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
-  
-  <title>The Longest Day Has an End</title>
+  <title>lyyourc</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="The Longest Day Has an End">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="The Longest Day Has an End">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="The Longest Day Has an End">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
   
-    <link rel="alternate" href="/atom.xml" title="The Longest Day Has an End" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-
 </head>
 </html>
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">The Longest Day Has an End</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-Java笔记 - 2.流程控制和数组" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/11/Java笔记 - 2.流程控制和数组/" class="article-date">
-  <time datetime="2019-04-11T10:41:15.865Z" itemprop="datePublished">2019-04-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/11/Java笔记 - 2.流程控制和数组/">Java笔记（二）流程控制和数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h4><p>Java提供两种常见的分支结构：if语句和switch语句。其中if语句使用布尔表达式或布尔值作为分支条件来进行分支控制，switch语句则用于对多个整型值进行匹配，从而实现分支。</p>
-<h5 id="1-switch分支语句"><a href="#1-switch分支语句" class="headerlink" title="1. switch分支语句"></a>1. switch分支语句</h5><p>switch语句中控制表达式的类型只能是byte、short、char和int。从满足条件的case开始执行，除非遇到break，否则一直向后执行完所有后面的case以及default。</p>
-<h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><p>一般的循环语句可能包含四部分：</p>
-<ul>
-<li>初始化语句：完成初始化工作，在循环开始之前执行</li>
-<li>循环条件：一个boolean表达式，决定是否执行循环体</li>
-<li>循环体：循环的主体，将被重复执行</li>
-<li>迭代语句：这个部分在每次循环结束后对循环条件中的变量进行控制，使循环在合适的时候结束。</li>
-</ul>
-<h5 id="1-while与do-while"><a href="#1-while与do-while" class="headerlink" title="1. while与do while"></a>1. while与do while</h5><p>while语句先判断条件，后执行循环，而do while首先执行循环，再判断条件是否进行下一次循环。</p>
-<h5 id="2-for语句"><a href="#2-for语句" class="headerlink" title="2. for语句"></a>2. for语句</h5><p>for语句是更加简洁的循环语句，大部分时候，for循环可以代替while循环和do while循环。</p>
-<h4 id="控制循环结构"><a href="#控制循环结构" class="headerlink" title="控制循环结构"></a>控制循环结构</h4><p>Java语言没有提供go to语句来控制程序的跳转，提高了程序的可读性，但是降低了程序的灵活性，为了弥补这种不足，Java提供了continue和break来控制循环结构。</p>
-<h5 id="1-使用break结束循环"><a href="#1-使用break结束循环" class="headerlink" title="1. 使用break结束循环"></a>1. 使用break结束循环</h5><p>break用于完全结束一个循环，跳出循环体。break语句不仅可以结束其所在循环，还可以直接结束其外层循环。此时需要在break后面紧跟一个标签，这个标签用于标识一个外层循环。如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">outer:</span><br><span class="line"><span class="keyword">for</span>(;;)&#123;</span><br><span class="line">	<span class="keyword">for</span>(;;)&#123;</span><br><span class="line">		<span class="keyword">break</span> outer;</span><br><span class="line">		<span class="comment">//此时直接结束外层循环</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Java中的标签就是一个紧跟着英文冒号的标识符。与其他语言不同的是，Java中的标签只有放在循环语句之前才有作用。</p>
-<h5 id="2-continue结束本次循环"><a href="#2-continue结束本次循环" class="headerlink" title="2. continue结束本次循环"></a>2. continue结束本次循环</h5><p>continue与break的区别就是continue只是中止本次循环，开始下一次循环。可以接为continue是略过本次循环中剩下的语句。continue后面也可以紧跟一个标签，用于直接结束标签所标识循环的当次循环。</p>
-<h4 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h4><h5 id="1-数组的初始化"><a href="#1-数组的初始化" class="headerlink" title="1. 数组的初始化"></a>1. 数组的初始化</h5><p>Java中数组的初始化有两种方式：</p>
-<ul>
-<li>静态初始化：初始化时由程序员显示指定每个元素的初始值，由系统决定需要的数组长度</li>
-<li>动态初始化：初始化时程序员只指定数组长度，由系统为数组元素分配初始值</li>
-</ul>
-<p>静态初始化的格式为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type[] arrayName;</span><br><span class="line">arryName=<span class="keyword">new</span> type[]&#123;element1,element2,...&#125;;</span><br></pre></td></tr></table></figure>
-<p>在实际开发过程中，更习惯将数组的定义和初始化放在一起：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a=&#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br></pre></td></tr></table></figure>
-<p>动态初始化的语法格式为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrayName=<span class="keyword">new</span> type[length];</span><br></pre></td></tr></table></figure>
-<p>执行动态初始化的时候，系统为数组元素分配初始值：</p>
-<ul>
-<li>整型（int、long、short、byte）为0</li>
-<li>浮点型（float、double）为0.0</li>
-<li>字符类型（char）为’\u0000’</li>
-<li>布尔类型（boolean）为false</li>
-<li>引用类型为null</li>
-</ul>
-<h5 id="2-使用数组"><a href="#2-使用数组" class="headerlink" title="2. 使用数组"></a>2. 使用数组</h5><p>数组有很多的函数，比如.length就是一个求数组长度的函数，使用方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//已初始化int型数组arryint；&lt;br&gt;</span></span><br><span class="line">system.out.println(arryint.length);</span><br></pre></td></tr></table></figure>
-<p>将显示数组长度。</p>
-<p>Java为数组提供了foreach循环，这种循环遍历数组和集合更加便捷。使用foreach时无需获取数组长度，自动循环遍历数组的每个元素。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(type variableName:array|collection)&#123;</span><br><span class="line"><span class="comment">//自动遍历</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面语法格式中，type是数组元素的类型，variableName是形参名，foreach依次将数组中的元素赋给形参变量，在循环中使用。</p>
-<p>在使用foreach循环时，循环体中只是使用了形参，因此在循环中对形参赋值并不会改变原数组的值。所以要对数组进行赋值，不能使用foreach。</p>
-<h5 id="3-深入数组"><a href="#3-深入数组" class="headerlink" title="3. 深入数组"></a>3. 深入数组</h5><p>定义两个数组a、b，执行b=a，并不是将数组a的值赋给b，而是将b指向a，原有的b数组不变，但是此时第二个数组失去了引用，就变成了垃圾，它的值和长度都不会改变，直到彻底消失。</p>
-<p>另外，虽然Java提供了支持多维数组的语法，但是从数组底层的运行机制上来看，没有多维数组。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] a;</span><br><span class="line">a=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>][];</span><br><span class="line"><span class="comment">//可以把a看做一个一维数组，数组的每个元素都是int[]型的变量，初始值是null;</span></span><br><span class="line">a[<span class="number">0</span>]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line"><span class="comment">//数组的第一个元素是一个长度为3的一维int型数组;</span></span><br><span class="line">a[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">6</span>;</span><br><span class="line"><span class="comment">//对数组的第一个元素所指组的第二个元素赋值;</span></span><br></pre></td></tr></table></figure>
-<p>初始化多维数组时，可以只指定最左边维数的大小，也可以一次指定每一维的大小。如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] b=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>][<span class="number">4</span>];</span><br><span class="line"><span class="comment">//上述代码完成定义以及初始化；</span></span><br></pre></td></tr></table></figure>
-<p>Java语言是强类型的语言，已经定义好的数组不能再次拓展维数。</p>
-<p>Java提供了很多操作数组的工具类，可以通过查询API文档使用</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/11/Java笔记 - 2.流程控制和数组/" data-id="cjue2qojw0001tgx7erp5e7gd" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
-  </nav>
-</section>
-        
-          <aside id="sidebar">
+  <nav class="app-nav">
   
     
-
-  
-    
-
-  
+      <a class="active" href="/.">home</a>
     
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li></ul>
-    </div>
-  </div>
-
-
+      <a href="/archives">archive</a>
+    
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/04/11/Java笔记 - 2.流程控制和数组/">Java笔记（二）流程控制和数组</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/09/Java笔记 - 1.数据类型/">Java笔记（一）数据类型</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 Glubin Tao<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+      <a href="/atom.xml">rss</a>
+    
   
 </nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <header class="app-header">
+  <section class="banner">
+    <!-- http://daverupert.com/2015/12/intrinsic-placeholders-with-picture/ -->
+    <div class="placeholder"></div>
+    <img class="banner-small" data-src="http://7xrcp8.com1.z0.glb.clouddn.com/banner-large.png" src="http://7xrcp8.com1.z0.glb.clouddn.com/banner-small.png" alt="banner">
+  </section>
 
+  <section class="description">
+    <img class="avatar" src="http://7xrcp8.com1.z0.glb.clouddn.com/avatar.png" alt="avatar">
+    <h1 class="title"> lyyourc </h1>
+    <h3 class="subtitle"> You Are The JavaScript In My HTML </h3>
+  </section>
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <ul class="social-list">
+    <a href="https://twitter.com/DrakeLeung">Twitter</a>
+    <a href="https://github.com/DrakeLeung">GitHub</a>
+    <a href="http://weibo.com/cha12chalyc">Weibo</a>
+  </ul>
+</header>
 
+<main class="index">
+  
+    <article>
+      <h1 class="article-title">
+        <a href="/2019/04/11/Java笔记 - 2.流程控制和数组/">Java笔记（二）流程控制和数组</a>
+      </h1>
 
-<script src="/js/script.js"></script>
+      <div class="article-entry">
+        
+      </div>
 
-  </div>
+      <div class="article-meta">
+        <span class="article-date">Apr 11 2019</span>
+      </div>
+    </article>
+  
+
+  <nav class="page-nav">
+  <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &rarr;</a>
+</nav>
+
+</main>
+
+<footer class="app-footer">
+  <p>
+    Written by
+    <a href="https://github.com/DrakeLeung/hexo-theme-again">
+      Drake Leung
+    </a>
+  </p>
+  <p> Powered by <a href="https://hexo.io"> Hexo </a> </p><p>
+</p></footer>
+
+<script src="/js/app.js"></script>
+
 </body>
 </html>
