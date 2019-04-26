@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>Java笔记（四）面向对象（2） | GlubinTao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+</html>
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+    
+      <a href="/atom.xml">rss</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2019/04/26/Java笔记 - 4.面向对象（2）/">Java笔记（四）面向对象（2）</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">April 26 2019</p>
+  </section>
+
+  <section class="article-entry">
+    <h4 id="package、import和import-static"><a href="#package、import和import-static" class="headerlink" title="package、import和import static"></a>package、import和import static</h4><p>同一个包下的类可以互相调用，而不同的包之间的类调用需要使用类的全名，例如tao包里的hello类调用sun包里的nohello，就要写sun.nohello，当包中有子包，调用次数比较多的时候，这样写非常繁琐，所以可以使用import将其他包的类引入。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">package</span>.subpackage. . .Classname;<span class="comment">//subpackage是子包名</span></span><br></pre></td></tr></table></figure></p>
+<p>也可以使用import导入一个包里的全部类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">package</span>.subpackage. . .*;</span><br></pre></td></tr></table></figure></p>
+<p>这种方法只能导入类，比如使用import tao*，只能引入tao里的类，不包括tao的子包里的类。特别注意，import两个包时，注意是否有同名类，如果有，在引用时，要写完整的类名。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java,lang.System</span><br></pre></td></tr></table></figure>
+<p>上面的语句引入包里的所有静态属性。</p>
+<h4 id="深入构造器"><a href="#深入构造器" class="headerlink" title="深入构造器"></a>深入构造器</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Selfinit</span></span>&#123;     </span><br><span class="line">       <span class="keyword">public</span> String name;</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">int</span> id;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="title">Selfinit</span><span class="params">(String name,<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">           <span class="keyword">this</span>.id=id;</span><br><span class="line">           <span class="keyword">this</span>.name=name;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">outinfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">           System.out.println(<span class="keyword">this</span>.id);</span><br><span class="line">           System.out.println(<span class="keyword">this</span>.name);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>自定义构造器，可以理解为在创建一个对象时，就将他初始化，如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"自定义构造器的实现："</span>);</span><br><span class="line">        String Aname=<span class="string">"xiaoming"</span>;</span><br><span class="line">        Selfinit xiaoming= <span class="keyword">new</span> Selfinit(Aname,<span class="number">1</span>);。</span><br><span class="line">        xiaoming.outinfo();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>要注意的是，当程序员定义了构造器的时候，将不能在使用默认构造器，不能再通过new Selfinit()这种无参数构造器来创建实例。</p>
+<p>构造器也可以重载，由于构造器的名字必须和类名一样，所以多个构造器的名字也完全相同，为了区分这些构造器，它们的形参类表必须不同。有趣的是，构造器重载的时候可以使用this来调用另一个构造器的代码，如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Selfinit2</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> String name;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> id;</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Selfinit2</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name=name;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Selfinit2</span><span class="params">(String name,<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>(name);</span><br><span class="line">            <span class="keyword">this</span>.id=id;</span><br><span class="line">        &#125;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h4><p>Java的继承具有单继承的特点，每个子类只有一个直接父类。Java的继承通过extends关键字来实现。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">extendsusing</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">plant</span></span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> String pname;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPname</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.pname=name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">fruit</span> <span class="keyword">extends</span> <span class="title">plant</span></span>&#123;</span><br><span class="line">        <span class="keyword">protected</span> String fname;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFname</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.fname=name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span> <span class="keyword">extends</span> <span class="title">fruit</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> weight;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> value;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setInfom</span><span class="params">(<span class="keyword">int</span> weight,<span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.weight=weight;</span><br><span class="line">            <span class="keyword">this</span>.value=value;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"The kind is:"</span>+<span class="keyword">this</span>.pname);</span><br><span class="line">            System.out.println(<span class="string">"The name is:"</span>+<span class="keyword">this</span>.fname);</span><br><span class="line">            System.out.println(<span class="string">"the weigth is:"</span>+<span class="keyword">this</span>.weight);</span><br><span class="line">            System.out.println(<span class="string">"the value is:"</span>+<span class="keyword">this</span>.value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Apple apple=<span class="keyword">new</span> Apple();</span><br><span class="line">        apple.setPname(<span class="string">"Fruit"</span>);</span><br><span class="line">        apple.setFname(<span class="string">"Apple"</span>);</span><br><span class="line">        apple.setInfom(<span class="number">2</span>,<span class="number">10</span>);</span><br><span class="line">        apple.Print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Java中不允许多继承，但是可以间接继承。但有一点值得注意的是，子类并不能继承父类的构造器。Java中有个公共父类——java,lang.Object，所有类都可以调用Object所定义的方法。</p>
+<p>当子类重新定义了一个和父类中同名的属性或方法时，又想在子类中调用父类的属性或方法，可以使用super替换this来实现。也可以使用super来实现调用父类构造器代码。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">superusing</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">animals</span></span>&#123; </span><br><span class="line">        <span class="keyword">public</span> String name;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> weight;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">animals</span><span class="params">(String name,<span class="keyword">int</span> weight)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name=name;</span><br><span class="line">            <span class="keyword">this</span>.weight=weight;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">tiger</span> <span class="keyword">extends</span> <span class="title">animals</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> String name;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">tiger</span><span class="params">(String name,String nam,<span class="keyword">int</span> weight)</span></span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(nam,weight);</span><br><span class="line">            <span class="keyword">this</span>.name=name;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="keyword">super</span>.name);</span><br><span class="line">            System.out.println(<span class="keyword">this</span>.name);</span><br><span class="line">            System.out.println(<span class="keyword">this</span>.weight);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        tiger jam=<span class="keyword">new</span> tiger(<span class="string">"James"</span>,<span class="string">"tiger"</span>,<span class="number">150</span>);</span><br><span class="line">        jam.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BaseClass pBc=<span class="keyword">new</span> SubClass();</span><br></pre></td></tr></table></figure>
+<p>这个语句定义了一个实例，这个实例，编译时是BsaeClass（父类），运行时是子类，这就是多态。由于编译时是父类，所以不能使用子类特有的方法和属性，因为这样不能通过编译。如果子类中有对父类方法的重写，运行时将会执行重写后的内容，但是访问属性时，无论子类有没有重写，都访问父类的属性。</p>
+<h4 id="继承的使用"><a href="#继承的使用" class="headerlink" title="继承的使用"></a>继承的使用</h4><p>父类中有不想被子类使用的属性或方法可以使用private来修饰，如果希望可以被外界调用，但不希望子类使用可以使用final来修饰。</p>
+<p>是否创建子类也是个值得思考的问题，派生子类的条件：</p>
+<ul>
+<li>子类需要额外增加属性，而不仅仅是属性值得改变。</li>
+<li>子类需要增加自己独有的行为方式。</li>
+</ul>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.jpg" alt="avatar">
+    <div class="grid-item">
+      <p class="title"> GlubinTao </p>
+      <p class="subtitle">  </p>
+    <div>
+  </div></div></section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a class="twitter-share-button" data-size="large" data-via="DrakeLeung" href="https://twitter.com/intent/tweet?text= id=" package、import和">
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'GlubinTao';
+  
+  var disqus_url = 'http://yoursite.com/2019/04/26/Java笔记 - 4.面向对象（2）/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>
