@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>Java笔记（二）面向对象（1） | GlubinTao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+</html>
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+    
+      <a href="/atom.xml">rss</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2019/04/26/Java笔记 - 3.面向对象（1）/">Java笔记（二）面向对象（1）</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">April 26 2019</p>
+  </section>
+
+  <section class="article-entry">
+    <h4 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h4><p>面向对象的程序设计有两个重要概念：类（class）和对象（object，也被后才能为实例，instance）。类是一种概念，对象是实体。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"> 零到多个构造器定义……</span><br><span class="line"> 零到多个属性……</span><br><span class="line"> 零到多个方法……</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>定义属性的语法格式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] 属性类型 属性名[=默认值]</span><br></pre></td></tr></table></figure>
+<p>属性语法格式的详细说明：</p>
+<ul>
+<li>修饰符：修饰符可以省略，也可以是public、protected、private、static、final，其中public、protected、private三个最多只能出现其中一个，可以与static、final组合起来修饰属性。</li>
+<li>属性类型：属性类型可以是Java语言允许的任何数据类型，包括基本类型和应用类型。</li>
+<li>属性名：一个合法的标识符，从程序可读性角度来看，应由一个或多个有意义的单词组成。（第一个单词首字母小写，后面每个单词首字母大写，其余小写）</li>
+<li>默认值：可以定义一个可选的默认值。</li>
+</ul>
+<p>在Java官方的说法里，属性被称为filed，因此有些地方将属性翻译为字段。定义方法的语法格式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] 方法返回类型 方法名(形参列表)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//由零到多条可执行语句组成的方法体</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>方法语法格式的详细说明：</p>
+<ul>
+<li>修饰符：可以省略，也可以是public、protected、private、static、final、abstract，其中public、protected、private只能出现一个，abstract和final最多只能出现一个，可以与static组合起来修饰方法、</li>
+<li>方法返回值类型：可以是Java语言允许的任何数据类型，包括基本类型和引用类型。如果声明了返回值类型，则方法体内必须有一个有效的return语句，返回一个变量或一个表达式，这个变量或者表达式的类型必须与此处声明的类型匹配。除此之外，如果一个方法没有返回值，必须使用void来声明没有返回值。</li>
+<li>方法名：通常建议以英文中的动词开头</li>
+<li>形参列表：以英文逗号隔开</li>
+</ul>
+<p>static是一个特殊的关键字，它用于修饰方法、成员变量等成员。使用static修饰的成员表示它属于这个类本身，而不属于该类的单个对象。（使用static修饰的成员变量和方法也叫类方法、类变量<br>）</p>
+<h4 id="对象、引用和指针"><a href="#对象、引用和指针" class="headerlink" title="对象、引用和指针"></a>对象、引用和指针</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person p=<span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>
+<p>这样一行代码创建了一个Person实例，也被成为Person对象，这个Person对象被赋给p变量。<br>这样在这行代码中实际上产生了两个实体：一个是p变量，一个是Person对象。</p>
+<p>实际上可以将p理解成指针，但是它远比指针简单。此时定义一个p2，并执行p2=p，这样p2和p指向同一个对象。<br>如果堆内存里没有任何变量指向该对象，那么程序将无法再访问该对象，这个对象也就变成了垃圾，Java的垃圾回收机制将回收该对象，释放内存。</p>
+<h4 id="方法详解"><a href="#方法详解" class="headerlink" title="方法详解"></a>方法详解</h4><p>方法由函数发展而来，但方法与函数有着显著不同。在结构化编程里，函数是一等公民，程序由函数组成。但是在面向对象编程语言里，类是一等公民，系统由类组成。因此在JAVA语言里，方法不能独立存在，方法必须属于类或者对象。</p>
+<p>Java语言里方法的所属性主要体现在以下几个方面：</p>
+<ul>
+<li>方法不能独立定义</li>
+<li>从逻辑上来看，方法要么属于该类本身，要么属于该类的一个对象</li>
+<li>永远不能单独执行方法，执行方法必须使用类或者对象作为调用者</li>
+</ul>
+<p>使用static修饰的方法属于这个类本身，可以使用类本身来调用，也可以使用对象来调用。没使用static修饰的方法只能使用对象来调用。</p>
+<p>Java方法的参数传递方式只有一种：值传递。将实际参数值的副本传入方法内，而参数本身不会受到任何影响。Java把内存分为两种：堆内存和栈内存。堆内存用来存储对象和数组，栈随着方法的开始而开辟，随着方法的结束而删除。当调用方法时，如果实际参数是调用者自己的栈内存中的值，那么它不会被改变，但如果参数是堆内存中的对象或者数组，那么调用者和被调用者都可以改变堆内存中的值。</p>
+<p>Java还允许定义形参个数可变的参数。（通过在最后一个类型后加…）代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a,String... books)</span></span></span><br></pre></td></tr></table></figure>
+<p>一个方法中最多只能有一个长度可变形参（最后一个）。</p>
+<p>Java允许容一个类里定义多个同名的方法，只要形参类表不同就行。也就是同一个类中方法名相同，参数列表不同。</p>
+<h4 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h4><p>成员变量指的是在类里定义的变量，局部变量指的是在方法里定义的变量。使用成员变量的时候应注意变量的所属，是类还是实例。调用类的成员变量时，尽量使用类作为主调。在使用变量时，要注意变量使用范围，然后在正确的范围里定义变量。</p>
+<h4 id="隐藏和封装"><a href="#隐藏和封装" class="headerlink" title="隐藏和封装"></a>隐藏和封装</h4><p>良好的封装是为了：</p>
+<ul>
+<li>隐藏类的实现细节</li>
+<li>在方法里加入控制逻辑，限制对属性的不合理访问</li>
+<li>可进行数据检查，从而有利于保证信息完整性</li>
+<li>便于修改，提高代码可维护性</li>
+</ul>
+<p>实现封装的途径是：</p>
+<ul>
+<li>将对象的属性和实现细节隐藏，不允许外部直接访问</li>
+<li>把方法暴露出来，让方法操作和访问这些属性</li>
+</ul>
+<p>要实现隐藏属性，就要了解Java的访问控制级别：由小到大依次为private、default、protected、public。</p>
+<p>关于访问控制符的使用：</p>
+<ul>
+<li>类里的绝大部分成员都应该用private修饰，只有一些static修饰的、类似于全局变量的成员变量才使用public。</li>
+<li>有些方法用来辅助该类的其他方法实现，被称为工具方法，工具方法也应该使用private修饰。</li>
+<li>如果这个类主要用作其他类的父类，该类的绝大部分方法仅希望被其子类重写，而不希望被外界直接调用，则用protected修饰。</li>
+<li>希望暴露出来被外界自由调用的方法应该使用public修饰。</li>
+</ul>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.jpg" alt="avatar">
+    <div class="grid-item">
+      <p class="title"> GlubinTao </p>
+      <p class="subtitle">  </p>
+    <div>
+  </div></div></section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a class="twitter-share-button" data-size="large" data-via="DrakeLeung" href="https://twitter.com/intent/tweet?text= id=" 类和对象"><a href>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+</a>
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'GlubinTao';
+  
+  var disqus_url = 'http://yoursite.com/2019/04/26/Java笔记 - 3.面向对象（1）/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>
