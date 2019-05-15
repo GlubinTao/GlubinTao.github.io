@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>Java笔记（五）面向对象（3） | GlubinTao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+</html>
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+    
+      <a href="/atom.xml">rss</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2019/04/26/Java笔记 - 5.面向对象（3）/">Java笔记（五）面向对象（3）</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">April 26 2019</p>
+  </section>
+
+  <section class="article-entry">
+    <h4 id="print和toString"><a href="#print和toString" class="headerlink" title="print和toString"></a>print和toString</h4><p>打印对象的方法有很多，比如在类里定义专有的打印方法，可以自己定义打印的格式等。Java的Object为所有实例定义了打印方法：print和tostring结合使用，使用方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">ublic <span class="class"><span class="keyword">class</span> <span class="title">obprint</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  <span class="class"><span class="keyword">class</span> <span class="title">person</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line">        <span class="keyword">public</span> String name;</span><br><span class="line">        <span class="keyword">public</span> String city;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"姓名："</span>+name+<span class="string">"年龄："</span>+age+<span class="string">"城市："</span>+city+<span class="string">"\n"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">student</span> <span class="keyword">extends</span> <span class="title">person</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> String university;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"姓名："</span>+name+<span class="string">"年龄："</span>+age+<span class="string">"城市："</span>+city+<span class="string">"学校："</span>+university;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        person pc=<span class="keyword">new</span> person();</span><br><span class="line">        student sc=<span class="keyword">new</span> student();</span><br><span class="line">        pc.age=<span class="number">20</span>;</span><br><span class="line">        pc.name=<span class="string">"小明"</span>;</span><br><span class="line">        pc.city=<span class="string">"秦皇岛"</span>;</span><br><span class="line">        sc.age=<span class="number">20</span>;</span><br><span class="line">        sc.name=<span class="string">"小孙"</span>;</span><br><span class="line">        sc.city=<span class="string">"秦皇岛"</span>;</span><br><span class="line">        sc.university=<span class="string">"东北大学秦皇岛分校"</span>;</span><br><span class="line">        System.out.print(pc);</span><br><span class="line">        System.out.print(sc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在类的定义里，定义tostring方法，返回值为一个string型变量，内容为自己定义的要输出的内容，主函数中直接调用系统的print方法输出tostring的返回值。<br>输出结果如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">姓名：小明年龄：<span class="number">20</span>城市：秦皇岛&lt;br&gt;</span><br><span class="line">姓名：小孙年龄：<span class="number">20</span>城市：秦皇岛学校：东北大学秦皇岛分校&lt;br&gt;</span><br><span class="line">进程已结束,退出代码<span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="和equals"><a href="#和equals" class="headerlink" title="==和equals"></a>==和equals</h4><p>通常来说我们写程序时习惯于使用”==”来比较两个值，在对数值进行比较时，这种方法没有任何错误，甚至他还能包容不同类型的比较（比如说int型和float型）；但是，当我们希望比较两个引用类型，或者类时，这种方法是行不通的。Java的Object类定义了一种方法equals，可以进行引用类型之间的比较。</p>
+<p>我们还可以在定义类的时候重写这个类的equals方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">equalsusing</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">person</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line">        <span class="keyword">public</span> String name;</span><br><span class="line">        <span class="keyword">public</span> String sex;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> weight;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">person</span><span class="params">(<span class="keyword">int</span> age,String name,String sex,<span class="keyword">int</span> weight)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.age=age;</span><br><span class="line">            <span class="keyword">this</span>.name=name;</span><br><span class="line">            <span class="keyword">this</span>.sex=sex;</span><br><span class="line">            <span class="keyword">this</span>.weight=weight;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(person pc)</span></span>&#123;</span><br><span class="line">            <span class="keyword">int</span> a=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(pc.age==<span class="keyword">this</span>.age)&#123;</span><br><span class="line">                <span class="keyword">if</span>(pc.name.equals(<span class="keyword">this</span>.name))&#123;</span><br><span class="line">                    <span class="keyword">if</span>(pc.sex.equals(<span class="keyword">this</span>.sex))&#123;</span><br><span class="line">                        <span class="keyword">if</span> (pc.weight==<span class="keyword">this</span>.weight)&#123;</span><br><span class="line">                            a=<span class="number">1</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(a==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        person pone=<span class="keyword">new</span> person(<span class="number">10</span>,<span class="string">"Angle"</span>,<span class="string">"female"</span>,<span class="number">100</span>);</span><br><span class="line">        person ptwo=<span class="keyword">new</span> person(<span class="number">10</span>,<span class="string">"Angle"</span>,<span class="string">"female"</span>,<span class="number">100</span>);</span><br><span class="line">        person pthree=<span class="keyword">new</span> person(<span class="number">10</span>,<span class="string">"angle"</span>,<span class="string">"female"</span>,<span class="number">100</span>);</span><br><span class="line">        System.out.println(pone.equals(ptwo));</span><br><span class="line">        System.out.println(pone.equals(pthree));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行结果如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">true</span></span><br><span class="line"><span class="keyword">false</span></span><br></pre></td></tr></table></figure></p>
+<p>重写equals方法应满足：</p>
+<ul>
+<li>自反性：与自身比较一定返回true；</li>
+<li>对称性：x与y比较和y与x比较的结果一定相同；</li>
+<li>传递性：x与y比较的结果是true，x与c的结果是true，那么y与c的结果一定为true；</li>
+<li>一致性：两个引用型无论比较多少次，结果一定相同；</li>
+<li>对任意不是null的x，x.equals(null)的结果一定是false</li>
+</ul>
+<p>要注意的是，默认提供的equals只是比较对象的地址，所以实际使用的时候常常要重写equals方法。</p>
+<h4 id="final修饰符"><a href="#final修饰符" class="headerlink" title="final修饰符"></a>final修饰符</h4><p>使用final修饰变量时，表示该变量一旦获得了初值就不可被改变。所以无论final修饰的类属性还是实例属性，都必须赋初始值，否则该变量被初始成为null后，将不可改变，变量失去意义。类属性可以使用初始化块完成，实例属性通过构造器完成。但是有一点要注意，使用final修饰后，只是对象不能改变，但是对象的属性可以改变。</p>
+<p>final修饰方法时，修饰public或protected等可以被子类访问的方法时，子类不可以对这些方法进行重写，但是可以重载（名称相同，但是形参类表不同）。final可以用来修饰类，这样的类不可以有子类，例如Math类就是一个final类。</p>
+<h4 id="缓存不可变类的实例"><a href="#缓存不可变类的实例" class="headerlink" title="缓存不可变类的实例"></a>缓存不可变类的实例</h4><p>不可变实例的状态不可改变，可以很方便的被多个对象所共享。如果程序需要常常使用相同的不可变实例，应考虑缓存这种实例。缓存有很多实现方法，下面的代码以数组为例，简单阐述缓存的思想：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CacheImmutale</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> CacheImmutale[] cache=<span class="keyword">new</span> CacheImmutale[<span class="number">10</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> pos =<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CacheImmutale</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getname</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> CacheImmutale <span class="title">valueof</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;pos;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cache[i]!=<span class="keyword">null</span>&amp;&amp;cache[i].getname().equals(name))&#123;</span><br><span class="line">                <span class="keyword">return</span> cache[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(pos==<span class="number">10</span>)&#123;</span><br><span class="line">            cache[<span class="number">0</span>]=<span class="keyword">new</span> CacheImmutale(name);</span><br><span class="line">            pos=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> cache[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            cache[pos++]=<span class="keyword">new</span> CacheImmutale(name);</span><br><span class="line">            <span class="keyword">return</span> cache[pos-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> CacheImmutale)&#123;</span><br><span class="line">            CacheImmutale ci=(CacheImmutale)obj;</span><br><span class="line">            <span class="keyword">if</span>(name.equals(ci.getname()))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name.hashCode();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        CacheImmutale c1=CacheImmutale.valueof(<span class="string">"hello"</span>);</span><br><span class="line">        CacheImmutale c2=CacheImmutale.valueof(<span class="string">"hello"</span>);</span><br><span class="line">        CacheImmutale c3=<span class="keyword">new</span> CacheImmutale(<span class="string">"hello"</span>);</span><br><span class="line">        System.out.println(c1==c2);</span><br><span class="line">        System.out.println(c1==c3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.jpg" alt="avatar">
+    <div class="grid-item">
+      <p class="title"> GlubinTao </p>
+      <p class="subtitle">  </p>
+    <div>
+  </div></div></section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a class="twitter-share-button" data-size="large" data-via="DrakeLeung" href="https://twitter.com/intent/tweet?text= id=" print和tostring"">
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'GlubinTao';
+  
+  var disqus_url = 'http://yoursite.com/2019/04/26/Java笔记 - 5.面向对象（3）/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>
