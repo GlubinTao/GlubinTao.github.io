@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <title>Java笔记（六）面向对象（4） | GlubinTao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+</html>
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+    
+      <a href="/atom.xml">rss</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2019/05/16/Java笔记 - 6.面向对象（4）/">Java笔记（六）面向对象（4）</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">May 16 2019</p>
+  </section>
+
+  <section class="article-entry">
+    <h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><p>在编写一个类时，只知道他的子类会用到一个方法，但是不同子类的该方法不尽相同，这时可以使用抽象方法实现：抽象方法是只有方法签名，没有方法实现的方法。</p>
+<p>既然父类不知道子类的方法如何实现，那可不可以不管他了呢？这其实并不是一个好办法：假设有一个Shape引用变量，该变量实际上引用到子类的实例，那么这个Shape变量就无法调用子类里的calprint（）方法，必须将其强制转换为其子类类型。</p>
+<p>抽象方法和抽象类必须使用abstract修饰符来定义（有抽象方法的类只能被定义为抽象类），规则如下：</p>
+<ul>
+<li>抽象类和方法都必须使用abstract修饰符来修饰，抽象方法不能有方法实体</li>
+<li>抽象类不能被实例化，无法使用new关键字来调用抽象类的构造器创建实例（即使这个抽象类里没有抽象方法）</li>
+<li>抽象类可以包含属性、方法、构造器、初始化块、内部类、枚举类六种成分。构造器用于被其子类调用</li>
+<li>含有抽象方法的类只能被定义为抽象类</li>
+</ul>
+<p>如下代码展示抽象类的使用方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象类的使用</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">abstractusing</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">        &#123;</span><br><span class="line">            System.out.println(<span class="string">"执行Shape的初始化块..."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">private</span> String color;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">double</span> <span class="title">calPerimeter</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">getType</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Shape</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Shape</span><span class="params">(String color)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"执行Shape的构造器..."</span>);</span><br><span class="line">            <span class="keyword">this</span>.color=color;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setColor</span><span class="params">(String color)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.color=color;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getColor</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.color;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Triangle</span> <span class="keyword">extends</span> <span class="title">Shape</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">double</span> a;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">double</span> b;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">double</span> c;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Triangle</span><span class="params">(String color,<span class="keyword">double</span> a,<span class="keyword">double</span> b,<span class="keyword">double</span> c)</span></span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(color);</span><br><span class="line">            <span class="keyword">this</span>.setSides(a,b,c);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSides</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b, <span class="keyword">double</span> c)</span></span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(a&gt;=b+c||b&gt;=a+c||c&gt;=a+b)&#123;</span><br><span class="line">                System.out.println(<span class="string">"两边之和必须大于第三边！"</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">this</span>.a=a;</span><br><span class="line">            <span class="keyword">this</span>.b=b;</span><br><span class="line">            <span class="keyword">this</span>.c=c;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//重写Shape类的计算周长的抽象方法</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">calPerimeter</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a+b+c;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getType</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"三角形"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Triangle t1=<span class="keyword">new</span> Triangle(<span class="string">"黑色"</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">        Shape t2=<span class="keyword">new</span> Triangle(<span class="string">"红色"</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>);</span><br><span class="line">        System.out.println(t1.getType());</span><br><span class="line">        System.out.println(t1.getColor());</span><br><span class="line">        System.out.println(t1.calPerimeter());</span><br><span class="line">        System.out.println(t2.getType());</span><br><span class="line">        System.out.println(t2.getColor());</span><br><span class="line">        System.out.println(t2.calPerimeter());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Shape类中定义了两个抽象方法：calPerimeter()和getType()，所以普通子类Triangle中，必须是实现这两个方法。在使用new创建实例时，t1直接由子类Triangle创建，t2由Shape创建，指向Triangle子类。程序的输出如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">执行Shape的初始化块...</span><br><span class="line">执行Shape的构造器...</span><br><span class="line">执行Shape的初始化块...</span><br><span class="line">执行Shape的构造器...</span><br><span class="line">三角形</span><br><span class="line">黑色</span><br><span class="line"><span class="number">12.0</span></span><br><span class="line">三角形</span><br><span class="line">红色</span><br><span class="line"><span class="number">24.0</span></span><br></pre></td></tr></table></figure>
+<p>注意，abstract不能修饰局部变量、属性，即没有抽象变量和抽象属性。也没有抽象构造器。抽象方法必须被其子类重写才有意义，因此abstract方法不能使用private修饰。</p>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><p>接口定义的是多个类共同的公共行为规范，这些行为是与外部交流的通道。这意味着接口里通常是定义一组共用方法。</p>
+<p>接口不再使用class关键字定义，而是使用interface关键字，基本语法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">interface</span> 接口名 <span class="keyword">extends</span> 父接口1,父接口2...</span>&#123;</span><br><span class="line">        零到多个常量定义...</span><br><span class="line">        零到多个抽象方法定义...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修饰符可以使用public或者省略，如果省略访问控制符，则默认采用包权限访问控制符，只有在相同包结构下才可以访问该接口</li>
+<li>接口名与类名采用相同的命名规则</li>
+<li>一个接口可以有多个直接父接口</li>
+</ul>
+<p>由于接口定义的是一种规范，因此接口里不能包含构造器和初始化块定义。接口里可以包含属性（只能是常量）、方法（只能是抽象方法）、内部类（包括内部接口）和枚举定义。因为接口定义的是多个类的共同行为规范，所以接口里的所有成员都是public范文权限（定义接口成员时，可以省略访问控制符，如果指定访问控制符，只能是public）。</p>
+<p>接口里的常量，因为是接口相关的，而且只能是常量，系统会自动为这些属性添加static和final两个修饰符。接口里的方法只能是抽象方法，系统会自动为其添加abstract属性，由于是抽象方法，因此接口里不可以定义静态方法。</p>
+<p>接口的继承和类继承不一样，接口完全支持多继承，即一个接口可以有多个直接父接口。如下列程序演示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">interfaceusing</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">A</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> interA=<span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">B</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> interB=<span class="number">6</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">A</span>,<span class="title">B</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> interC=<span class="number">7</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(C.interA);</span><br><span class="line">        System.out.println(C.interB);</span><br><span class="line">        System.out.println(C.interC);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果如下，接口C继承了A和B，所以包含A和B定义的属性：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line">进程已结束,退出代码<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>接口的使用：接口不能用于创建实例，但接口可以声明引用类型的变量。当使用接口来声明引用类型的变量时，这个引用类型的变量必须引用到其实现类的对象。接口的主要用途就是被实现类实现。实现接口的语法格式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[修饰符] <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类 <span class="keyword">implements</span> 接口1,接口2...</span>&#123;</span><br><span class="line">    类体部分</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如下代码展示了接口的实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">interfaceuse</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">Output</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> Max_cache_line=<span class="number">50</span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">out</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">getData</span><span class="params">(String msg)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">product</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">getProduceTime</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Printer</span> <span class="keyword">implements</span> <span class="title">Output</span>,<span class="title">product</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String[] printData=<span class="keyword">new</span> String[Max_cache_line];</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> dataNum=<span class="number">0</span>;<span class="comment">//用以打印当前需打印的作业数</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">out</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="comment">//只要还有作业，继续打印</span></span><br><span class="line">            <span class="keyword">while</span>(dataNum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                System.out.println(<span class="string">"打印机打印："</span>+printData[<span class="number">0</span>]);</span><br><span class="line">                <span class="comment">//作业队列整体前移一位，作业数减一</span></span><br><span class="line">                System.arraycopy(printData,<span class="number">1</span>,printData,<span class="number">0</span>,--dataNum);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getData</span><span class="params">(String msg)</span></span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(dataNum&gt;=Max_cache_line)&#123;</span><br><span class="line">                System.out.println(<span class="string">"输出队列已满，添加失败！"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//把打印数据添加到队列里，已保存数据的数量加1</span></span><br><span class="line">                printData[dataNum++]=msg;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getProduceTime</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">45</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//创建Printer对象，当成Output使用</span></span><br><span class="line">        Output o=<span class="keyword">new</span> Printer();</span><br><span class="line">        o.getData(<span class="string">"东北大学"</span>);</span><br><span class="line">        o.getData(<span class="string">"秦皇岛分校"</span>);</span><br><span class="line">        o.out();</span><br><span class="line">        o.getData(<span class="string">"计算机与通信工程学院"</span>);</span><br><span class="line">        o.getData(<span class="string">"计算机科学与技术"</span>);</span><br><span class="line">        o.out();</span><br><span class="line">        <span class="comment">//创建Ptinter对象，当成product使用</span></span><br><span class="line">        product p=<span class="keyword">new</span> Printer();</span><br><span class="line">        System.out.println(p.getProduceTime());</span><br><span class="line">        <span class="comment">//所有接口类型的引用变量都可以直接赋给Object类型的变量</span></span><br><span class="line">        Object obj=p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">打印机打印：东北大学</span><br><span class="line">打印机打印：秦皇岛分校</span><br><span class="line">打印机打印：计算机与通信工程学院</span><br><span class="line">打印机打印：计算机科学与技术</span><br><span class="line"><span class="number">45</span></span><br></pre></td></tr></table></figure>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.jpg" alt="avatar">
+    <div class="grid-item">
+      <p class="title"> GlubinTao </p>
+      <p class="subtitle">  </p>
+    <div>
+  </div></div></section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a class="twitter-share-button" data-size="large" data-via="DrakeLeung" href="https://twitter.com/intent/tweet?text= id=" 抽象类"><a href="#">
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+</a>
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'GlubinTao';
+  
+  var disqus_url = 'http://yoursite.com/2019/05/16/Java笔记 - 6.面向对象（4）/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>
